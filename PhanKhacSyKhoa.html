@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phan Khac Sy Khoa - Trang ca nhan</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            padding: 50px;
+        }
+        h1 {
+            color: #38bdf8;
+        }
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        img {
+            margin-top: 20px;
+            border-radius: 15px;
+            display: none;
+        }
+        .love {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #f87171;
+            display: none;
+        }
+
+        /* tim bay */
+        .heart {
+            position: absolute;
+            color: red;
+            animation: float 3s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Phan Khac Sy Khoa</h1>
+        <p>Sinh vien nganh tai chinh</p>
+
+        <div class="card">
+            <h2>Gioi thieu</h2>
+            <p>Toi la Phan Khac Sy Khoa, dam me cong nghe va lap trinh.</p>
+        </div>
+
+        <div class="card">
+            <h2>So thich</h2>
+            <p>Code, choi game, hoc tai chinh</p>
+        </div>
+
+        <div class="love" id="loveText">
+            toi yeu me nhat tren doi ??
+        </div>
+
+        <img id="myImage" src="https://via.placeholder.com/200" width="200">
+
+        <p>(Nhan phim "1" de kich hoat ??)</p>
+    </div>
+
+    <script>
+        // bam phim 1
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "1") {
+                document.getElementById("myImage").style.display = "block";
+                document.getElementById("loveText").style.display = "block";
+                createHearts();
+            }
+        });
+
+        // tao tim bay
+        function createHearts() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.innerHTML = "??";
+                heart.classList.add("heart");
+
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }, 200);
+        }
+    </script>
+</body>
+</html>
